@@ -12,8 +12,9 @@ require "refinery/menu"
 require "refinery/menu_item"
 require "refinery/plugin"
 require "refinery/plugins"
-require "pages/marketable_routes"
-require "pages/tabs"
+require "refinery/page_images"
+require "refinery/pages/marketable_routes"
+require "refinery/pages/tabs"
 require "refinery/blog/tabs"
 
 Rails.root.join('app', 'presenters')
@@ -116,7 +117,7 @@ RefineryTest::Application.configure do
   ### Extend active record ###
 
   config.to_prepare do
-    require File.expand_path('../../../lib/pages/tabs', __FILE__)
+    require File.expand_path('../../../lib/refinery/pages/tabs', __FILE__)
   end
 
   # config.middleware.insert_after 'Rack::Lock', 'Dragonfly::Middleware', :resources
@@ -203,6 +204,23 @@ RefineryTest::Application.configure do
       }
     end    
   end
+
+  config.after_initialize do
+    # Refinery::Pages::Tab.register do |tab|
+    #   register tab
+    # end
+    
+    # if defined?(Refinery::Blog::Tab)
+    #   Refinery::Blog::Tab.register do |tab|
+    #     register tab
+    #   end
+    # end
+    
+    Refinery::Plugin.register do |plugin|
+      plugin.name = "page_images"
+      plugin.hide_from_menu = true
+    end
+  end
   
 
 
@@ -218,4 +236,6 @@ RefineryTest::Application.configure do
   #   Refinery::Plugins.activate(plugin.name)
   # end
 end
+
+ActiveRecord::Base.send(:include, Refinery::PageImages)
 

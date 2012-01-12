@@ -52,6 +52,24 @@ describe Page do
     end
   end
 
+  describe "page-images" do
+    it "should have an image" do
+      p = Factory(:page_with_image)
+      p.refinery_images.count.should == 1
+    end
+    
+    it "should accept images_attributes=" do
+      page = Factory(:page)
+      image = Factory(:refinery_image)
+      
+      page.refinery_images.count.should == 0
+      
+      page.update_attributes({:refinery_images_attributes => {"0" => {"id" => image.id}}})
+      
+      page.refinery_images.count.should == 1
+    end
+  end
+
   context "page urls" do
 
     it "return a full path" do

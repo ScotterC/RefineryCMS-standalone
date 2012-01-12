@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120112150012) do
+ActiveRecord::Schema.define(:version => 20120112154141) do
 
   create_table "blog_categories", :force => true do |t|
     t.string   "title"
@@ -56,6 +56,27 @@ ActiveRecord::Schema.define(:version => 20120112150012) do
   end
 
   add_index "blog_posts", ["id"], :name => "index_blog_posts_on_id"
+
+  create_table "image_page_translations", :force => true do |t|
+    t.integer  "image_page_id"
+    t.string   "locale"
+    t.string   "caption"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "image_page_translations", ["image_page_id"], :name => "index_image_page_translations_on_image_page_id"
+
+  create_table "image_pages", :force => true do |t|
+    t.integer "refinery_image_id"
+    t.integer "page_id"
+    t.integer "position"
+    t.text    "caption"
+    t.string  "page_type",         :default => "page"
+  end
+
+  add_index "image_pages", ["page_id"], :name => "index_image_pages_on_page_id"
+  add_index "image_pages", ["refinery_image_id"], :name => "index_image_pages_on_refinery_image_id"
 
   create_table "page_part_translations", :force => true do |t|
     t.integer  "page_part_id"

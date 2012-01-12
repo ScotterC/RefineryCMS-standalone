@@ -2,6 +2,7 @@ require 'globalize3'
 
 class Page < ActiveRecord::Base
   extend FriendlyId
+  include Refinery::PageImages
   # when a dialog pops up to link to a page, how many pages per page should there be
   PAGES_PER_DIALOG = 14
 
@@ -76,6 +77,8 @@ class Page < ActiveRecord::Base
            :inverse_of => :page,
            :dependent => :destroy,
            :include => ((:translations) if defined?(::PagePart::Translation))
+
+  has_many_page_images
 
   accepts_nested_attributes_for :parts, :allow_destroy => true
 

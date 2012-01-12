@@ -2,7 +2,8 @@ require 'acts-as-taggable-on'
 require 'seo_meta'
 
 class BlogPost < ActiveRecord::Base
-
+  include Refinery::PageImages
+  
   is_seo_meta if self.table_exists?
 
   default_scope :order => 'published_at DESC'
@@ -15,6 +16,7 @@ class BlogPost < ActiveRecord::Base
 
   has_many :categorizations, :dependent => :destroy
   has_many :categories, :through => :categorizations, :source => :blog_category
+  has_many_page_images
 
   acts_as_indexed :fields => [:title, :body]
 

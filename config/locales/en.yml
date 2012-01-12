@@ -2,6 +2,9 @@ en:
   js:
     admin:
       confirm_changes: Any changes you've made will be lost. Are you sure you want to continue without saving?
+      page_images:
+        add_caption: Add Caption
+        done: Done      
   plugins:
     refinery_core:
       title: Refinery
@@ -29,6 +32,9 @@ en:
       description: Manage images      
     refinerycms_blog:
       title: Blog      
+    page_images:
+      title: Page Images
+      description: Page Images allows you to relate one or more images to any page in Refinery which makes it really easy for you to create simple image galleries with lightbox style popups on the front end page views.      
   welcome:
     there_are_no_users: "There are no users yet, so we'll set you up first."
     remember_admin_location: "Remember your Refinery admin area is at:"
@@ -38,6 +44,10 @@ en:
     superuser: Superuser
     refinery: Refinery
   admin:
+    pages:
+      tabs:
+        images_bar:
+          add: Add Image  
     blog:
       categories:
         category:

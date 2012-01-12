@@ -52,3 +52,16 @@ Factory.define(:blog_post, :class => BlogPost) do |f|
   f.published_at Time.now
 end
 
+Factory.define :page do |p|
+  p.title 'Whatnot'
+end
+
+Factory.define :page_with_image, :parent => :page do |page|
+  page.after_create { |p| p.refinery_images << Factory(:refinery_image) }
+end
+
+Factory.define :blog_post_with_image, :parent => :blog_post do |blog|
+  blog.after_create { |b| b.refinery_images << Factory(:refinery_image) }
+end
+
+

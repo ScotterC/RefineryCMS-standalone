@@ -17,6 +17,18 @@ describe BlogPost do
     end
   end
 
+  describe "page-images" do
+    it "should not have images" do
+      blog = Factory(:blog_post)
+      blog.refinery_images.count.should == 0
+    end
+    
+    it "should have images" do
+      blog = Factory(:blog_post_with_image)
+      blog.refinery_images.count.should == 1
+    end
+  end
+
   describe "comments association" do
 
     it "have a comments attribute" do
