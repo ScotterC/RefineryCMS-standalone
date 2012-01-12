@@ -14,6 +14,7 @@ require "refinery/plugin"
 require "refinery/plugins"
 require "pages/marketable_routes"
 require "pages/tabs"
+require "refinery/blog/tabs"
 
 Rails.root.join('app', 'presenters')
 Rails.root.join('vendor', '**', '**', 'app', 'presenters')
@@ -191,6 +192,16 @@ RefineryTest::Application.configure do
       plugin.always_allow_access = true
       plugin.menu_match = /(refinery|admin)\/(refinery_|pages_)?dialogs/
     end          
+
+    Refinery::Plugin.register do |plugin|
+      plugin.pathname = Rails.root
+      plugin.name = "refinerycms_blog"
+      plugin.url = {:controller => '/admin/blog/posts', :action => 'index'}
+      plugin.menu_match = /^\/?(admin|refinery)\/blog\/?(posts|comments|categories)?/
+      plugin.activity = {
+        :class => BlogPost
+      }
+    end    
   end
   
 

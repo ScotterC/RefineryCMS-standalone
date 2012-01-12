@@ -2,7 +2,7 @@
   class Admin::DashboardController < Admin::BaseController
 
     def index
-      Refinery::Plugins.registered.each {|p| Refinery::Plugins.activate(p.name)}
+      #Refinery::Plugins.registered.each {|p| Refinery::Plugins.activate(p.name)}
       
       @recent_activity = []
             

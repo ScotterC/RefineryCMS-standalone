@@ -44,7 +44,14 @@ gem 'rack-cache',       '>= 0.5.3'
 gem 'seo_meta',                    '~> 1.1'
 gem "cancan"
 gem 'dalli'
-gem 'ruby-debug19'
+gem 'filters_spam',   '~> 0.2'
+gem 'acts-as-taggable-on'
+
+group :development, :test do
+  gem 'ruby-debug19'
+
+end
+
 
 group :test do
   
