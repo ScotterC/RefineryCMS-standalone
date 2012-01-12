@@ -16,7 +16,7 @@ module Refinery
         items << MenuItem.new(item.merge(:menu_id => id))
       end if objects
 
-      ::Refinery.menus[self.id] = self
+      Refinery.menus[self.id] = self
     end
 
     attr_accessor :items, :id

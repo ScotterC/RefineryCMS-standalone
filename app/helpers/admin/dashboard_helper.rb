@@ -1,5 +1,5 @@
-module Admin
-  module DashboardHelper
+
+  module Admin::DashboardHelper
 
     def activity_message_for(record)
       plugin = Refinery::Plugins.active.find_by_model(record.class)
@@ -21,4 +21,3 @@ module Admin
     end
 
   end
-end

@@ -57,172 +57,172 @@ RefineryTest::Application.routes.draw do
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id(.:format)))'
   ## REFINERY BLOG
-  scope(:path => 'blog', :module => 'blog') do
-    root :to => 'posts#index', :as => 'blog_root'
-    match 'feed.rss', :to => 'posts#index', :as => 'blog_rss_feed', :defaults => {:format => "rss"}
-    match ':id', :to => 'posts#show', :as => 'blog_post'
-    match 'categories/:id', :to => 'categories#show', :as => 'blog_category'
-    match ':id/comments', :to => 'posts#comment', :as => 'blog_post_blog_comments'
-    get 'archive/:year(/:month)', :to => 'posts#archive', :as => 'archive_blog_posts'
-    get 'tagged/:tag_id(/:tag_name)' => 'posts#tagged', :as => 'tagged_posts'
-  end
+    scope(:path => 'blog', :module => 'refinery/blog') do
+      root :to => 'posts#index', :as => 'blog_root'
+      match 'feed.rss', :to => 'posts#index', :as => 'blog_rss_feed', :defaults => {:format => "rss"}
+      match ':id', :to => 'posts#show', :as => 'blog_post'
+      match 'categories/:id', :to => 'categories#show', :as => 'blog_category'
+      match ':id/comments', :to => 'posts#comment', :as => 'blog_post_blog_comments'
+      get 'archive/:year(/:month)', :to => 'posts#archive', :as => 'archive_blog_posts'
+      get 'tagged/:tag_id(/:tag_name)' => 'posts#tagged', :as => 'tagged_posts'
+    end
 
-  scope(:path => 'refinery', :as => 'admin', :module => 'admin') do
-    scope(:path => 'blog', :as => 'blog', :module => 'blog') do
-      root :to => 'posts#index'
-      resources :posts do
+    scope(:path => 'refinery', :as => 'admin', :module => 'refinery/admin') do
+      scope(:path => 'blog', :as => 'blog', :module => 'blog') do
+        root :to => 'posts#index'
+        resources :posts do
+          collection do
+            get :uncategorized
+            get :tags
+          end
+        end
+
+        resources :categories
+
+        resources :comments do
+          collection do
+            get :approved
+            get :rejected
+          end
+          member do
+            get :approved
+            get :rejected
+          end
+        end
+
+        resources :settings do
+          collection do
+            get :notification_recipients
+            post :notification_recipients
+
+            get :moderation
+            get :comments
+            get :teasers
+          end
+        end
+      end
+    end
+    ## END REFINERY BLOG
+   
+    
+    ## REFINERY AUTH
+    devise_for :users, :controllers => {
+      :sessions => 'sessions',
+      :registrations => 'users',
+      :passwords => 'passwords'
+    }, :path_names => {
+      :sign_out => 'logout',
+      :sign_in => 'login',
+      :sign_up => 'register'
+    }
+
+    # Override Devise's default after login redirection route.  This will pushed a logged in user to the dashboard.
+    get 'refinery', :to => 'refinery/admin/dashboard#index', :as => :refinery_root
+    get 'refinery', :to => 'refinery/admin/dashboard#index', :as => :user_root
+
+    # Override Devise's other routes for convenience methods.
+    #get 'refinery/login', :to => "sessions#new", :as => :new_user_session
+    #get 'refinery/login', :to => "sessions#new", :as => :refinery_login
+    #get 'refinery/logout', :to => "sessions#destroy", :as => :destroy_user_session
+    #get 'refinery/logout', :to => "sessions#destroy", :as => :logout
+
+    scope(:path => 'refinery', :as => 'admin', :module => 'refinery/admin') do
+      resources :users, :except => :show
+    end
+    
+    
+    ## END REFINERY AUT
+    ## REFINERY SETTINGS
+    scope(:path => 'refinery', :as => 'admin', :module => 'refinery/admin') do
+      resources :settings,
+                :except => :show,
+                :as => :refinery_settings,
+                :controller => :refinery_settings
+    end
+    ## END REFINERY SETTINGS
+    ## REFINERY RESOURCES
+    # match '/system/resources/*dragonfly', :to => Dragonfly[:resources]
+    
+    scope(:path => 'refinery', :as => 'admin', :module => 'refinery/admin') do
+      resources :resources, :except => :show do
         collection do
-          get :uncategorized
-          get :tags
+          get :insert
         end
       end
-
-      resources :categories
-
-      resources :comments do
+    end
+    ## END REFINERY RESOURCES
+    ## REFINERY PAGES
+    get '/pages/:id', :to => 'refinery/pages#show', :as => :page
+    
+    scope(:path => 'refinery', :as => 'admin', :module => 'refinery/admin') do
+      resources :pages, :except => :show do
         collection do
-          get :approved
-          get :rejected
-        end
-        member do
-          get :approved
-          get :rejected
+          post :update_positions
         end
       end
-
-      resources :settings do
+    
+      resources :pages_dialogs, :only => [] do
         collection do
-          get :notification_recipients
-          post :notification_recipients
-
-          get :moderation
-          get :comments
-          get :teasers
+          get :link_to
+          get :test_url
+          get :test_email
+        end
+      end
+    
+      resources :page_parts, :only => [:new, :create, :destroy]
+    end
+    ## END REFINERY PAGES
+    
+    ## REFINERY IMAGES
+    # match '/system/images/*dragonfly', :to => Dragonfly[:refinery_images]
+    
+    scope(:path => 'refinery', :as => 'admin', :module => 'refinery/admin') do
+      resources :refinery_images, :except => :show do
+        collection do
+          get :insert
         end
       end
     end
-  end
-  ## END REFINERY BLOG
- 
-  
-  ## REFINERY AUTH
-  devise_for :users, :controllers => {
-    :sessions => 'sessions',
-    :registrations => 'users',
-    :passwords => 'passwords'
-  }, :path_names => {
-    :sign_out => 'logout',
-    :sign_in => 'login',
-    :sign_up => 'register'
-  }
+    ## END REFINERY IMAGES
+    
+    ## REFINERY CORE
+    # filter(:refinery_locales) if defined?(RoutingFilter::RefineryLocales) # optionally use i18n.
+    
 
-  # Override Devise's default after login redirection route.  This will pushed a logged in user to the dashboard.
-  get 'refinery', :to => 'admin/dashboard#index', :as => :refinery_root
-  get 'refinery', :to => 'admin/dashboard#index', :as => :user_root
-
-  # Override Devise's other routes for convenience methods.
-  #get 'refinery/login', :to => "sessions#new", :as => :new_user_session
-  #get 'refinery/login', :to => "sessions#new", :as => :refinery_login
-  #get 'refinery/logout', :to => "sessions#destroy", :as => :destroy_user_session
-  #get 'refinery/logout', :to => "sessions#destroy", :as => :logout
-
-  scope(:path => 'refinery', :as => 'admin', :module => 'admin') do
-    resources :users, :except => :show
-  end
-  
-  
-  ## END REFINERY AUT
-  ## REFINERY SETTINGS
-  scope(:path => 'refinery', :as => 'admin', :module => 'admin') do
-    resources :settings,
-              :except => :show,
-              :as => :refinery_settings,
-              :controller => :refinery_settings
-  end
-  ## END REFINERY SETTINGS
-  ## REFINERY RESOURCES
-  # match '/system/resources/*dragonfly', :to => Dragonfly[:resources]
-  
-  scope(:path => 'refinery', :as => 'admin', :module => 'admin') do
-    resources :resources, :except => :show do
-      collection do
-        get :insert
-      end
+    
+    match 'wymiframe(/:id)', :to => 'refinery/fast#wymiframe', :as => :wymiframe
+    
+    scope(:path => 'refinery', :as => 'admin', :module => 'refinery/admin') do
+      root :to => 'dashboard#index'
+      resources :dialogs, :only => :show
     end
-  end
-  ## END REFINERY RESOURCES
-  ## REFINERY PAGES
-  get '/pages/:id', :to => 'pages#show', :as => :page
-  
-  scope(:path => 'refinery', :as => 'admin', :module => 'admin') do
-    resources :pages, :except => :show do
-      collection do
-        post :update_positions
-      end
+    
+    match '/refinery/update_menu_positions', :to => 'refinery/admin/refinery_core#update_plugin_positions'
+    
+    match '/sitemap.xml' => 'refinery/sitemap#index', :defaults => { :format => 'xml' }
+    
+     match '/refinery/*path' => 'refinery/admin/base#error_404'
+    ## END REFINERY CORE
+    
+    ## REFINERY DASHBOARD
+    scope(:path => 'refinery', :as => 'admin', :module => 'refinery/admin') do
+      match 'dashboard',
+            :to => 'dashboard#index',
+            :as => :dashboard
+    
+      match 'disable_upgrade_message',
+            :to => 'dashboard#disable_upgrade_message',
+            :as => :disable_upgrade_message
     end
-  
-    resources :pages_dialogs, :only => [] do
-      collection do
-        get :link_to
-        get :test_url
-        get :test_email
-      end
-    end
-  
-    resources :page_parts, :only => [:new, :create, :destroy]
-  end
-  ## END REFINERY PAGES
-  
-  ## REFINERY IMAGES
-  # match '/system/images/*dragonfly', :to => Dragonfly[:refinery_images]
-  
-  scope(:path => 'refinery', :as => 'admin', :module => 'admin') do
-    resources :refinery_images, :except => :show do
-      collection do
-        get :insert
-      end
-    end
-  end
-  ## END REFINERY IMAGES
-  
-  ## REFINERY CORE
-  # filter(:refinery_locales) if defined?(RoutingFilter::RefineryLocales) # optionally use i18n.
-  
+    ## END REFINERY DASHBOARD
+    
 
-  
-  match 'wymiframe(/:id)', :to => 'refinery/fast#wymiframe', :as => :wymiframe
-  
-  scope(:path => 'refinery', :as => 'admin', :module => 'admin') do
-    root :to => 'dashboard#index'
-    resources :dialogs, :only => :show
-  end
-  
-  match '/refinery/update_menu_positions', :to => 'admin/refinery_core#update_plugin_positions'
-  
-  match '/sitemap.xml' => 'sitemap#index', :defaults => { :format => 'xml' }
-  
-   match '/refinery/*path' => 'admin/base#error_404'
-  ## END REFINERY CORE
-  
-  ## REFINERY DASHBOARD
-  scope(:path => 'refinery', :as => 'admin', :module => 'admin') do
-    match 'dashboard',
-          :to => 'dashboard#index',
-          :as => :dashboard
-  
-    match 'disable_upgrade_message',
-          :to => 'dashboard#disable_upgrade_message',
-          :as => :disable_upgrade_message
-  end
-  ## END REFINERY DASHBOARD
-  
-
-  
-     match '*path' => 'pages#show'
+    
+       match '*path' => 'refinery/pages#show'
 
       
   # Marketable URLs should be appended to routes by the Pages Engine.
   # Catch all routes should be appended to routes by the Core Engine.
 
-  root :to => 'pages#home'
+  root :to => 'refinery/pages#home'
 end

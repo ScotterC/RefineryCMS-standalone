@@ -1,5 +1,5 @@
-module Admin
-  module RefineryImagesHelper
+
+  module Admin::RefineryImagesHelper
 
     def image_views
       RefinerySetting.find_or_set(:image_views, [:grid, :list])
@@ -24,4 +24,3 @@ module Admin
     end
 
   end
-end

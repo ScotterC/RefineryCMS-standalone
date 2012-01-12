@@ -1,4 +1,4 @@
-class HomeController < ApplicationController
+class HomeController < Refinery::ApplicationController
   
   def index
   end

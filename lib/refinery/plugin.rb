@@ -27,7 +27,6 @@ module Refinery
         def self.called_from; "#{new_called_from}"; end
       RUBY
       Object.const_set(plugin.class_name.to_sym, klass)
-      
       # add the new plugin to the collection of registered plugins
       ::Refinery::Plugins.registered << plugin
     end
@@ -85,11 +84,11 @@ module Refinery
     # Returns a hash that can be used to create a url that points to the administration part of the plugin.
     def url
       @url ||= if self.controller.present?
-        {:controller => "/admin/#{self.controller}"}
+        {:controller => "/refinery/admin/#{self.controller}"}
       elsif self.directory.present?
-        {:controller => "/admin/#{self.directory.split('/').pop}"}
+        {:controller => "/refinery/admin/#{self.directory.split('/').pop}"}
       else
-        {:controller => "/admin/#{self.name}"}
+        {:controller => "/refinery/admin/#{self.name}"}
       end
     end
 

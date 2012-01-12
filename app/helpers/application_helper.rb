@@ -2,7 +2,7 @@ module ApplicationHelper
   
   def admin?
     #controller_name =~ %r{^admin/}
-    controller.class.to_s =~ %r{^Admin}
+    controller.class.to_s =~ %r{^Refinery::Admin}
   end
 
   def error_404(exception=nil)

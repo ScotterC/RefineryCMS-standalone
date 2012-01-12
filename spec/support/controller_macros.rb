@@ -1,6 +1,5 @@
 module ControllerMacros
   def login_user
-    debugger
     before (:each) do
       @user = Factory(:user)
       @request.env["devise.mapping"] = Devise.mappings[:admin]

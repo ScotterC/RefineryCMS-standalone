@@ -1,3 +1,4 @@
+---
 en:
   js:
     admin:
@@ -43,269 +44,270 @@ en:
   roles:
     superuser: Superuser
     refinery: Refinery
-  admin:
-    pages:
-      tabs:
-        images_bar:
-          add: Add Image  
-    blog:
-      categories:
-        category:
-          edit: Edit this category
-          delete: Delete this category forever
+  refinery:
+    admin:
+      dashboard:
         index:
-          no_items_yet: 'There are no categories yet. Click "%{create}" to add your first category.'
-      comments:
-        approved: 'The comment from "%{author}" has been approved.'
-        comment:
-          view_live_html: 'View this comment live <br/><em>(opens in a new window)</em>'
-          read: Read this comment
-          reject: Reject this comment
-          approve: Approve this comment
-        rejected: 'The comment from "%{author}" has been rejected.'
-        index:
-          no_items_yet: 'There are no %{type} comments.'
-        show:
-          comment: Comment
-          blog_post: Blog Post
-          from: Posted by
-          date: Posted at
-          message: Comment
-          details: Details
-          age: Age
-          actions: Actions
-          back: Back to all comments
-          reject: Reject this comment
-          approve: Approve this comment
-      posts:
-        form:
-          advanced_options: Advanced Options
-          toggle_advanced_options: Click to access meta tag settings and menu options
-          save_as_draft: Save as Draft
-          published_at: Publish Date
-          custom_url: Custom Url
-          custom_url_help: Generate the url for the blog post from this text instead of the title.
-          copy_body: Copy Post Body to Teaser
-          copy_body_help: Copies the post body to the teaser.  Leave teaser blank to let Refinery automatically make the teaser.
-        index:
-          no_items_yet: 'There are no Blog Posts yet. Click "%{create}" to add your first blog post.'
-        uncategorized:
-          no_items_yet: 'There are no Uncategorized Blog Posts.'
-        post:
-          view_live_html: 'View this blog post live <br/><em>(opens in a new window)</em>'
-          edit: Edit this blog post
-          delete: Remove this blog post forever
-      settings:
-        notification_recipients:
-          value: Send notifications to
-          explanation: 'Every time someone comments on a blog post, Refinery sends out an email to say there is a new comment.'
-          hint: 'When a new comment is added, Refinery will send an email notification to you.'
-          example: "Enter your email address(es) like: jack@work.com, jill@office.com"
-          updated: 'Notification recipients have been set to "%{recipients}"'
-      submenu:
+          quick_tasks: Quick Tasks
+        actions:
+          add_a_new_page: Add a new page
+          update_a_page: Update a page
+          upload_a_image: Upload an image
+          upload_a_file: Upload a file
+          change_language: Change language
+          see_home_page: See home page
+        recent_activity:
+          empty: There has not been any activity recently.
+          latest_activity: Latest Activity
+          latest_activity_message: '%{what} %{kind} was %{action}'
+        recent_inquiries:
+          latest_inquiries: Latest Inquiries    
+      pages:
+        tabs:
+          images_bar:
+            add: Add Image  
+      blog:
         categories:
-          title: Categories
-          manage: Manage
-          new: Create new category
+          category:
+            edit: Edit this category
+            delete: Delete this category forever
+          index:
+            no_items_yet: 'There are no categories yet. Click "%{create}" to add your first category.'
         comments:
-          title: Comments
-          title_with_count: 'Comments (%{new_count} new)'
-          new: New
-          unmoderated: New
-          approved: Approved
-          rejected: Rejected
+          approved: 'The comment from "%{author}" has been approved.'
+          comment:
+            view_live_html: 'View this comment live <br/><em>(opens in a new window)</em>'
+            read: Read this comment
+            reject: Reject this comment
+            approve: Approve this comment
+          rejected: 'The comment from "%{author}" has been rejected.'
+          index:
+            no_items_yet: 'There are no %{type} comments.'
+          show:
+            comment: Comment
+            blog_post: Blog Post
+            from: Posted by
+            date: Posted at
+            message: Comment
+            details: Details
+            age: Age
+            actions: Actions
+            back: Back to all comments
+            reject: Reject this comment
+            approve: Approve this comment
         posts:
-          title: Posts
-          manage: Manage posts
-          new: Create new post
-          uncategorized: Uncategorized posts
+          form:
+            advanced_options: Advanced Options
+            toggle_advanced_options: Click to access meta tag settings and menu options
+            save_as_draft: Save as Draft
+            published_at: Publish Date
+            custom_url: Custom Url
+            custom_url_help: Generate the url for the blog post from this text instead of the title.
+            copy_body: Copy Post Body to Teaser
+            copy_body_help: Copies the post body to the teaser.  Leave teaser blank to let Refinery automatically make the teaser.
+          index:
+            no_items_yet: 'There are no Blog Posts yet. Click "%{create}" to add your first blog post.'
+          uncategorized:
+            no_items_yet: 'There are no Uncategorized Blog Posts.'
+          post:
+            view_live_html: 'View this blog post live <br/><em>(opens in a new window)</em>'
+            edit: Edit this blog post
+            delete: Remove this blog post forever
         settings:
-          title: Settings
-          moderation: Moderation
-          update_notified: Update who gets notified
-          comments: Comments
-          teasers: Teasers  
-    refinery_settings:
-      delete: Remove this setting forever
-      edit: Edit this setting
-      actions:
-        new: Add new setting
-      records:
-        empty_set: There are no settings yet.
-        create_first: "Click '%{link}' to add your first setting."
-      form:
-        enabled: "Yes, enable this setting."
-        restart_may_be_in_order_html: <strong>Please note</strong> that you may need to restart the website for this setting to take effect.
-        yes_make_this_setting_restricted: "Yes, make this setting restricted only to superusers."
-        help:
-          restricted: This makes the setting only visible and editable by users who are superusers (like you).
-          activity_show_limit: This limits the number of items that can display in the Dashboard listing.
-          analytics_page_code: This code activates Google Analytics tracking within your website. If the setting is left blank or set to UA-xxxxxx-x then this is disabled and no remote calls to Google Analytics are made.
-          frontend_refinery_stylesheets_enabled: "By default, Refinery includes stylesheets for the frontend which provide default CSS without getting in the way of your own stylesheets, enabled or disabled by this setting."
-          menu_hide_children: Hide any subpages from the menu even if they are present.
-          new_page_parts: Enable adding new page parts (content sections) in the page editors.
-          page_title: Very complex options for setting the page title. Here you can set custom CSS class or a different tag or tell it to breadcrumb with pages in its ancestry.
-          preferred_image_view: This controls which view the images plugin displays existing images in - grid for 'Grid View' and list for 'List View'. There is a button to automate this process on the images plugin itself.
-          show_contact_privacy_link: You can hide or show the link to the privacy policy page on the contact form by the submit button.
-          site_name: This is the name for your website and will display in the header and in the Refinery backend and in the footer copyright statement for some themes.
-          theme: Enter the name for the theme that you want to be enabled. This will take effect immediately and must correctly identify an existing theme for this to work.
-          use_google_ajax_libraries: If you want to use Google's AJAX CDN then set this to true.
-          use_marketable_urls: Change urls from /pages/about to /about and automatically manage conflicts with other plugins.
-          use_resource_caching: Recommended to enable this in production mode as it bundles javascript assets and stylesheet assets into single file packages to reduce the number of web requests on your site and speed it up.
-          approximate_ascii: "Set this to true if you use Latin characters with accents and other diacritics in page titles. It'll convert characters like ā, č, ž into a, c, z and this way those characters won't appear strangely in the address bar of some web browsers."  
-    resources:
-      delete: Remove this file forever
-      edit: Edit this file
-      form:
-        download_current: Download current file
-        or: or
-        replace: " replace it with this one..."
-        maximum_file_size: The maximum file size is %{megabytes} megabytes.
-      resource:
-        download: Download this file (%{size})
-      actions:
-        upload_new: Upload new file
-      records:
-        no_files_yet: There are no files yet. Click "Upload new file" to add your first file.
-      insert:
-        existing: Existing File
-        new: New File
-        no_files: There are no files.
-      existing_resource:
-        link_to_file: Link to this file
-        button_text: Insert  
-    pages_dialogs:
-      page_link:
-        link_to_this_page: Link to this page
-      link_to:
-        insert: Insert
-        your_page:
-          tab_name: Your page
-        web_address:
-          tab_name: Website
-          location: Location
-          new_window: New window
-          new_window_label: Check this box to have the link open in a new browser window.
-          not_sure: Not sure what to put in the box above?
-          step1: Find the page on the web you want to link to.
-          step2: Copy the web address from your browser's address bar and paste it into the box above.
-        email_address:
-          tab_name: Email address
-          subject_line_optional: Optional subject
-          body_optional: Optional body
-          not_sure: Not sure what to put in the boxes above?
-          step1_html: Write or copy and paste (e.g. from your address book) the email address to link to into the '<strong>Email Address</strong>' box above.
-          step2_html: Use the '<strong>Subject Line</strong>' box above if you want the message to be composed with a <strong>pre-written subject line</strong>.
-          step3_html: Use the <strong>Email Body</strong> box above if you want the message to be composed with a <strong>pre-written message</strong>.
-        your_resource:
-          tab_name: Your file
-          link_to_this_resource: Link to this file
-    pages:
-      delete: Remove this page forever
-      edit: Edit this page
-      reserved_system_word: "Sorry, but that title is a reserved system word."
-      page:
-        view_live_html: View this page live <br/><em>(opens in a new window)</em>
-        hidden: hidden
-        draft: draft
-      form_new_page_parts:
-        title: Title
-      form_page_parts:
-        create_content_section: Add content section
-        delete_content_section: Delete content section
-      form_advanced_options:
-        toggle_advanced_options: Access meta tag settings and menu options
-        page_options: Page Options
-        parent_page: Parent page
-        advanced_options: Advanced Options
-        custom_title: Custom title
-        title_types:
-          none: None
-          text: Text
-        show_in_menu_title: Show in menu
-        show_in_menu_description: Display this page in the site menu
-        show_in_menu_help: Uncheck this box if you want to remove a page from your site menu. This can be handy if you have a page you want to link people to directly but don&apos;t want to show the page in the menu.
-        save_as_draft: Save as Draft
-        skip_to_first_child: Skip top-level page
-        skip_to_first_child_label: Redirect visitors to the first sub-level page.
-        skip_to_first_child_help: This option makes this page link to the first page underneath. This can be useful when grouping pages together.
-        link_url: Forward this page to another website or page
-        link_url_help: If you want this page to go to another website or page when you click this page in the menu, enter a URL. e.g. http://google.com otherwise leave it blank
-        parent_page_help: You can put a page under another page by selecting it in the list. If you want this page to be a top-level page, just leave it blank.
-        custom_title_help: If you want the page to have a different title than the one that shows in the menu then select &apos;Text&apos; and enter it here.
-      actions:
-        create_new_page: Add new page
-        reorder_pages: Reorder pages
-        reorder_pages_done: Done reordering pages
-      records:
-        no_pages_yet: There are no pages yet. Click "Add new page" to add your first page.
-      translator_access: You do not have the required permission to modify pages in this language.  
-    menu:
-      reorder_menu: Reorder menu
-      reorder_menu_done: I'm done reordering the menu
-    dialogs:
-      show:
-        save: Save
-        cancel: Cancel
-    users:
-      delete: Remove this user forever
-      edit: Edit this user
-      update:
-        cannot_remove_user_plugin_from_current_user: You cannot remove the 'Users' plugin from the currently logged in account.
-      form:
-        blank_password_keeps_current: Leaving password blank keeps the current password
-        plugin_access: Plugin access
-        role_access: Role access
-        enable_all: enable all
-      actions:
-        create_new_user: Add new user
-      user:
-        email_user: Email this user
-        preview: '(%{who}) added %{created_at}'
-    dashboard:
-      index:
-        quick_tasks: Quick Tasks
-      actions:
-        add_a_new_page: Add a new page
-        update_a_page: Update a page
-        upload_a_image: Upload an image
-        upload_a_file: Upload a file
-        change_language: Change language
-        see_home_page: See home page
-      recent_activity:
-        empty: There has not been any activity recently.
-        latest_activity: Latest Activity
-        latest_activity_message: '%{what} %{kind} was %{action}'
-      recent_inquiries:
-        latest_inquiries: Latest Inquiries
-    images:
-      delete: Remove this image forever
-      edit: Edit this image
-      form:
-        image: Image
-        use_current_image: Use current image
-        or: or
-        replace_image: " replace it with this one..."
-        current_image: Current Image
-        maximum_image_size: The maximum image size is %{megabytes} megabytes.
-      actions:
-        create_new_image: Add new image
-      records:
-        no_images_yet: There are no images yet. Click "Add new image" to add your first image.
-      index:
-        view:
-          switch_to: Switch to %{view_name} view
-          list: list
-          grid: grid
-      grid_view:
-        view_live_html: View this image <br/><em>Opens in a new window</em>
-      existing_image:
-        button_text: Insert
-        resize_image: Resize the image?
-        size: Size
-      insert:
-        existing_image: Library
-        new_image: Upload
+          notification_recipients:
+            value: Send notifications to
+            explanation: 'Every time someone comments on a blog post, Refinery sends out an email to say there is a new comment.'
+            hint: 'When a new comment is added, Refinery will send an email notification to you.'
+            example: "Enter your email address(es) like: jack@work.com, jill@office.com"
+            updated: 'Notification recipients have been set to "%{recipients}"'
+        submenu:
+          categories:
+            title: Categories
+            manage: Manage
+            new: Create new category
+          comments:
+            title: Comments
+            title_with_count: 'Comments (%{new_count} new)'
+            new: New
+            unmoderated: New
+            approved: Approved
+            rejected: Rejected
+          posts:
+            title: Posts
+            manage: Manage posts
+            new: Create new post
+            uncategorized: Uncategorized posts
+          settings:
+            title: Settings
+            moderation: Moderation
+            update_notified: Update who gets notified
+            comments: Comments
+            teasers: Teasers  
+      refinery_settings:
+        delete: Remove this setting forever
+        edit: Edit this setting
+        actions:
+          new: Add new setting
+        records:
+          empty_set: There are no settings yet.
+          create_first: "Click '%{link}' to add your first setting."
+        form:
+          enabled: "Yes, enable this setting."
+          restart_may_be_in_order_html: <strong>Please note</strong> that you may need to restart the website for this setting to take effect.
+          yes_make_this_setting_restricted: "Yes, make this setting restricted only to superusers."
+          help:
+            restricted: This makes the setting only visible and editable by users who are superusers (like you).
+            activity_show_limit: This limits the number of items that can display in the Dashboard listing.
+            analytics_page_code: This code activates Google Analytics tracking within your website. If the setting is left blank or set to UA-xxxxxx-x then this is disabled and no remote calls to Google Analytics are made.
+            frontend_refinery_stylesheets_enabled: "By default, Refinery includes stylesheets for the frontend which provide default CSS without getting in the way of your own stylesheets, enabled or disabled by this setting."
+            menu_hide_children: Hide any subpages from the menu even if they are present.
+            new_page_parts: Enable adding new page parts (content sections) in the page editors.
+            page_title: Very complex options for setting the page title. Here you can set custom CSS class or a different tag or tell it to breadcrumb with pages in its ancestry.
+            preferred_image_view: This controls which view the images plugin displays existing images in - grid for 'Grid View' and list for 'List View'. There is a button to automate this process on the images plugin itself.
+            show_contact_privacy_link: You can hide or show the link to the privacy policy page on the contact form by the submit button.
+            site_name: This is the name for your website and will display in the header and in the Refinery backend and in the footer copyright statement for some themes.
+            theme: Enter the name for the theme that you want to be enabled. This will take effect immediately and must correctly identify an existing theme for this to work.
+            use_google_ajax_libraries: If you want to use Google's AJAX CDN then set this to true.
+            use_marketable_urls: Change urls from /pages/about to /about and automatically manage conflicts with other plugins.
+            use_resource_caching: Recommended to enable this in production mode as it bundles javascript assets and stylesheet assets into single file packages to reduce the number of web requests on your site and speed it up.
+            approximate_ascii: "Set this to true if you use Latin characters with accents and other diacritics in page titles. It'll convert characters like ā, č, ž into a, c, z and this way those characters won't appear strangely in the address bar of some web browsers."  
+      resources:
+        delete: Remove this file forever
+        edit: Edit this file
+        form:
+          download_current: Download current file
+          or: or
+          replace: " replace it with this one..."
+          maximum_file_size: The maximum file size is %{megabytes} megabytes.
+        resource:
+          download: Download this file (%{size})
+        actions:
+          upload_new: Upload new file
+        records:
+          no_files_yet: There are no files yet. Click "Upload new file" to add your first file.
+        insert:
+          existing: Existing File
+          new: New File
+          no_files: There are no files.
+        existing_resource:
+          link_to_file: Link to this file
+          button_text: Insert  
+      pages_dialogs:
+        page_link:
+          link_to_this_page: Link to this page
+        link_to:
+          insert: Insert
+          your_page:
+            tab_name: Your page
+          web_address:
+            tab_name: Website
+            location: Location
+            new_window: New window
+            new_window_label: Check this box to have the link open in a new browser window.
+            not_sure: Not sure what to put in the box above?
+            step1: Find the page on the web you want to link to.
+            step2: Copy the web address from your browser's address bar and paste it into the box above.
+          email_address:
+            tab_name: Email address
+            subject_line_optional: Optional subject
+            body_optional: Optional body
+            not_sure: Not sure what to put in the boxes above?
+            step1_html: Write or copy and paste (e.g. from your address book) the email address to link to into the '<strong>Email Address</strong>' box above.
+            step2_html: Use the '<strong>Subject Line</strong>' box above if you want the message to be composed with a <strong>pre-written subject line</strong>.
+            step3_html: Use the <strong>Email Body</strong> box above if you want the message to be composed with a <strong>pre-written message</strong>.
+          your_resource:
+            tab_name: Your file
+            link_to_this_resource: Link to this file
+      pages:
+        delete: Remove this page forever
+        edit: Edit this page
+        reserved_system_word: "Sorry, but that title is a reserved system word."
+        page:
+          view_live_html: View this page live <br/><em>(opens in a new window)</em>
+          hidden: hidden
+          draft: draft
+        form_new_page_parts:
+          title: Title
+        form_page_parts:
+          create_content_section: Add content section
+          delete_content_section: Delete content section
+        form_advanced_options:
+          toggle_advanced_options: Access meta tag settings and menu options
+          page_options: Page Options
+          parent_page: Parent page
+          advanced_options: Advanced Options
+          custom_title: Custom title
+          title_types:
+            none: None
+            text: Text
+          show_in_menu_title: Show in menu
+          show_in_menu_description: Display this page in the site menu
+          show_in_menu_help: Uncheck this box if you want to remove a page from your site menu. This can be handy if you have a page you want to link people to directly but don&apos;t want to show the page in the menu.
+          save_as_draft: Save as Draft
+          skip_to_first_child: Skip top-level page
+          skip_to_first_child_label: Redirect visitors to the first sub-level page.
+          skip_to_first_child_help: This option makes this page link to the first page underneath. This can be useful when grouping pages together.
+          link_url: Forward this page to another website or page
+          link_url_help: If you want this page to go to another website or page when you click this page in the menu, enter a URL. e.g. http://google.com otherwise leave it blank
+          parent_page_help: You can put a page under another page by selecting it in the list. If you want this page to be a top-level page, just leave it blank.
+          custom_title_help: If you want the page to have a different title than the one that shows in the menu then select &apos;Text&apos; and enter it here.
+        actions:
+          create_new_page: Add new page
+          reorder_pages: Reorder pages
+          reorder_pages_done: Done reordering pages
+        records:
+          no_pages_yet: There are no pages yet. Click "Add new page" to add your first page.
+        translator_access: You do not have the required permission to modify pages in this language.  
+      menu:
+        reorder_menu: Reorder menu
+        reorder_menu_done: I'm done reordering the menu
+      dialogs:
+        show:
+          save: Save
+          cancel: Cancel
+      users:
+        delete: Remove this user forever
+        edit: Edit this user
+        update:
+          cannot_remove_user_plugin_from_current_user: You cannot remove the 'Users' plugin from the currently logged in account.
+        form:
+          blank_password_keeps_current: Leaving password blank keeps the current password
+          plugin_access: Plugin access
+          role_access: Role access
+          enable_all: enable all
+        actions:
+          create_new_user: Add new user
+        user:
+          email_user: Email this user
+          preview: '(%{who}) added %{created_at}'
+      images:
+        delete: Remove this image forever
+        edit: Edit this image
+        form:
+          image: Image
+          use_current_image: Use current image
+          or: or
+          replace_image: " replace it with this one..."
+          current_image: Current Image
+          maximum_image_size: The maximum image size is %{megabytes} megabytes.
+        actions:
+          create_new_image: Add new image
+        records:
+          no_images_yet: There are no images yet. Click "Add new image" to add your first image.
+        index:
+          view:
+            switch_to: Switch to %{view_name} view
+            list: list
+            grid: grid
+        grid_view:
+          view_live_html: View this image <br/><em>Opens in a new window</em>
+        existing_image:
+          button_text: Insert
+          resize_image: Resize the image?
+          size: Size
+        insert:
+          existing_image: Library
+          new_image: Upload
   updated:
     'with_article "the"': updated
   created:
@@ -412,7 +414,7 @@ en:
         posts_tagged: Posts tagged
       archive:
         blog_archive_for: 'Blog Archive for %{date}'
-        no_blog_articles_posted: 'There are no blog articles posted for %{date}. Stay tuned.'        
+        no_blog_articles_posted: 'There are no blog articles posted for %{date}. Stay tuned.'           
   shared:
     site_bar:
       log_out: Log out
@@ -504,4 +506,4 @@ en:
           incorrect_format: 'Your image must be either a JPG, PNG or GIF'
         resource:
           blank: You must specify file for upload
-          too_long: File should be smaller than %{count} in size          
+          too_long: File should be smaller than %{count} in size

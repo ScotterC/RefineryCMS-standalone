@@ -132,7 +132,7 @@ RefineryTest::Application.configure do
     Refinery::Plugin.register do |plugin|
       plugin.pathname = Rails.root
       plugin.name = 'refinery_dashboard'
-      plugin.url = {:controller => '/admin/dashboard', :action => 'index'}
+      plugin.url = {:controller => '/refinery/admin/dashboard', :action => 'index'}
       plugin.menu_match = /(admin|refinery)\/(refinery_)?dashboard$/
       plugin.directory = 'dashboard'
       plugin.version = %q{1.0.0}
@@ -143,7 +143,7 @@ RefineryTest::Application.configure do
     Refinery::Plugin.register do |plugin|
       plugin.pathname = Rails.root
       plugin.name = 'refinery_files'
-      plugin.url = {:controller => '/admin/resources', :action => 'index'}
+      plugin.url = {:controller => '/refinery/admin/resources', :action => 'index'}
       plugin.menu_match = /(refinery|admin)\/(refinery_)?(files|resources)$/
       plugin.version = %q{1.0.0}
       plugin.activity = {
@@ -154,7 +154,8 @@ RefineryTest::Application.configure do
     Refinery::Plugin.register do |plugin|
       plugin.pathname = Rails.root
       plugin.name = 'refinery_pages'
-      plugin.directory = 'pages'
+      plugin.directory = 'pages'    
+      #plugin.url = {:controller => 'refinery/admin/pages'}
       plugin.version = %q{1.0.0}
       plugin.menu_match = /(refinery|admin)\/page(_part)?s(_dialogs)?$/
       plugin.activity = {
@@ -169,7 +170,7 @@ RefineryTest::Application.configure do
     Refinery::Plugin.register do |plugin|
       plugin.pathname = Rails.root
       plugin.name = 'refinery_settings'
-      plugin.url = {:controller => '/admin/refinery_settings'}
+      plugin.url = {:controller => '/refinery/admin/refinery_settings'}
       plugin.version = %q{1.0.0}
       plugin.menu_match = /(refinery|admin)\/(refinery_)?settings$/
     end 
@@ -177,6 +178,7 @@ RefineryTest::Application.configure do
     Refinery::Plugin.register do |plugin|
       plugin.pathname = Rails.root
       plugin.name = 'refinery_core'
+      plugin.url = {:controller => '/refinery/admin/refinery_core'}      
       plugin.class_name = 'RefineryEngine'
       plugin.version = %q{1.0.0}
       plugin.hide_from_menu = true
@@ -188,6 +190,7 @@ RefineryTest::Application.configure do
     Refinery::Plugin.register do |plugin|
       plugin.pathname = Rails.root
       plugin.name = 'refinery_dialogs'
+      plugin.url = {:controller => '/refinery/admin/dialogs'}
       plugin.version = %q{1.0.0}
       plugin.hide_from_menu = true
       plugin.always_allow_access = true
@@ -197,8 +200,8 @@ RefineryTest::Application.configure do
     Refinery::Plugin.register do |plugin|
       plugin.pathname = Rails.root
       plugin.name = "refinerycms_blog"
-      plugin.url = {:controller => '/admin/blog/posts', :action => 'index'}
-      plugin.menu_match = /^\/?(admin|refinery)\/blog\/?(posts|comments|categories)?/
+      plugin.url = {:controller => '/refinery/admin/blog/posts', :action => 'index'}
+      plugin.menu_match = /^\/?refinery\/(admin|refinery)\/blog\/?(posts|comments|categories)?/
       plugin.activity = {
         :class => BlogPost
       }

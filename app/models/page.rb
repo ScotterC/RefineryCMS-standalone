@@ -196,7 +196,7 @@ class Page < ActiveRecord::Base
     current_url = link_url
 
     if current_url =~ %r{^/} && ::Refinery::I18n.current_frontend_locale != ::Refinery::I18n.default_frontend_locale
-      current_url = "/#{::Refinery::I18n.current_frontend_locale}#{current_url}"
+      current_url = "/#{Refinery::I18n.current_frontend_locale}#{current_url}"
     end
 
     current_url
@@ -208,7 +208,7 @@ class Page < ActiveRecord::Base
   end
 
   def url_normal
-    {:controller => '/pages', :action => 'show', :path => nil, :id => to_param}
+    {:controller => '/refinery/pages', :action => 'show', :path => nil, :id => to_param}
   end
 
   def with_locale_param(url_hash)
@@ -298,7 +298,7 @@ class Page < ActiveRecord::Base
     # the current frontend locale is different to the current one set by ::I18n.locale.
     # This terminates in a false if i18n engine is not defined or enabled.
     def different_frontend_locale?
-      ::Refinery.i18n_enabled? && ::Refinery::I18n.current_frontend_locale != ::I18n.locale
+      Refinery.i18n_enabled? && Refinery::I18n.current_frontend_locale != ::I18n.locale
     end
 
     # Returns how many pages per page should there be when paginating pages
