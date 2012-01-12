@@ -29,6 +29,7 @@
     end
 
     def comment
+      @meta = present(@page)
       if (@blog_comment = @blog_post.comments.create(params[:blog_comment])).valid?
         if BlogComment::Moderation.enabled? or @blog_comment.ham?
           begin
