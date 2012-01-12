@@ -1,5 +1,5 @@
-module Admin
-  class RefineryImagesController < Admin::BaseController
+# module Admin
+  class Admin::RefineryImagesController < Admin::BaseController
 
     include Admin::RefineryImagesHelper
 
@@ -104,4 +104,4 @@ module Admin
     end
 
   end
-end
+# end

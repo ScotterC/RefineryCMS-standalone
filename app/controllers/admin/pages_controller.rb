@@ -1,5 +1,5 @@
-module Admin
-  class PagesController < Admin::BaseController
+# module Admin
+  class Admin::PagesController < Admin::BaseController
 
     
     crudify :page,
@@ -85,4 +85,4 @@ module Admin
     end
 
   end
-end
+# end

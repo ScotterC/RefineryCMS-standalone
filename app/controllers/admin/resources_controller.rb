@@ -1,5 +1,5 @@
-module Admin
-  class ResourcesController < Admin::BaseController
+# module Admin
+  class Admin::ResourcesController < Admin::BaseController
 
     crudify :resource,
             :order => "updated_at DESC",
@@ -84,4 +84,4 @@ module Admin
     end
 
   end
-end
+# end

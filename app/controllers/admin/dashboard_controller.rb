@@ -1,5 +1,5 @@
-module Admin
-  class DashboardController < Admin::BaseController
+# module Admin
+  class Admin::DashboardController < Admin::BaseController
 
     def index
       Refinery::Plugins.registered.each {|p| Refinery::Plugins.activate(p.name)}
@@ -35,4 +35,4 @@ module Admin
     end
 
   end
-end
+# end

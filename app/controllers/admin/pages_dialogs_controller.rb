@@ -1,7 +1,7 @@
 require 'net/http'
 
-module Admin
-  class PagesDialogsController < Admin::DialogsController
+# module Admin
+  class Admin::PagesDialogsController < Admin::DialogsController
 
     def link_to
       @pages = Page.paginate :page => params[:page],
@@ -82,4 +82,4 @@ module Admin
     end
 
   end
-end
+# end

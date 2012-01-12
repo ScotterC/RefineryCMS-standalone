@@ -1,5 +1,5 @@
-module Admin
-  class PagePartsController < Admin::BaseController
+# module Admin
+  class Admin::PagePartsController < Admin::BaseController
 
     def new
       render :partial => "/admin/pages/page_part_field", :locals => {
@@ -21,4 +21,4 @@ module Admin
     end
 
   end
-end
+# end

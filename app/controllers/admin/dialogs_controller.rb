@@ -1,5 +1,5 @@
-module Admin
-  class DialogsController < Admin::BaseController
+# module Admin
+  class Admin::DialogsController < Admin::BaseController
 
     def show
       @dialog_type = params[:id].downcase
@@ -20,4 +20,4 @@ module Admin
     end
 
   end
-end
+# end

@@ -1,7 +1,8 @@
 module ApplicationHelper
   
   def admin?
-    controller_name =~ %r{^admin/}
+    #controller_name =~ %r{^admin/}
+    controller.class.to_s =~ %r{^Admin}
   end
 
   def error_404(exception=nil)

@@ -1,5 +1,5 @@
-module Admin
-  class UsersController < Admin::BaseController
+# module Admin
+  class Admin::UsersController < Admin::BaseController
 
     crudify :user,
             :order => 'username ASC',
@@ -83,4 +83,4 @@ module Admin
     end
 
   end
-end
+# end

@@ -11,7 +11,8 @@ class ApplicationController < ActionController::Base
   
   
   def admin?
-    controller_name =~ %r{^admin/}
+    #controller_name =~ %r{^admin/}
+    self.class.to_s =~ %r{^Admin}
   end
 
   def from_dialog?

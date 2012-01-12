@@ -1,5 +1,5 @@
-module Admin
-  class RefinerySettingsController < Admin::BaseController
+# module Admin
+  class Admin::RefinerySettingsController < Admin::BaseController
 
     helper :refinery_settings
 
@@ -69,4 +69,4 @@ module Admin
     end
 
   end
-end
+# end
