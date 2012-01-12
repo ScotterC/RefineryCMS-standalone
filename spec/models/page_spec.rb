@@ -30,7 +30,6 @@ describe Page do
 
   context "cannot be deleted under certain rules" do
     it "if link_url is present" do
-      debugger
       page.link_url = '/plugin-name'
       page_cannot_be_destroyed
     end

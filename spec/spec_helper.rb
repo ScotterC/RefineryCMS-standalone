@@ -1,7 +1,6 @@
 require 'rbconfig'
 require 'factory_girl'
 require 'ruby-debug'
-require "support/refinery/controller_macros"
 
 def setup_environment
   # This file is copied to ~/spec when you run 'rails generate rspec'
@@ -14,7 +13,7 @@ def setup_environment
   Capybara.javascript_driver = :webkit
   # Requires supporting files with custom matchers and macros, etc,
   # in ./support/ and its subdirectories.
-  Dir[File.expand_path("support/**/*.rb", __FILE__)].each {|f| require f}
+  Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
   require 'factories'
   # engines = [ 
   #   'authentication',
@@ -34,7 +33,7 @@ def setup_environment
     # config.mock_with :rr
     config.mock_with :rspec
 
-    config.fixture_path = ::Rails.root.join('spec', 'fixtures').to_s
+    config.fixture_path = Rails.root.join('spec', 'fixtures').to_s
     
     config.treat_symbols_as_metadata_keys_with_true_values = true
     config.filter_run :focus => true
@@ -46,7 +45,7 @@ def setup_environment
     config.use_instantiated_fixtures  = false
     
     config.include ::Devise::TestHelpers, :type => :controller
-    config.extend  Refinery::ControllerMacros, :type => :controller
+    config.extend ControllerMacros, :type => :controller
   end
 end
 
