@@ -20,7 +20,7 @@
     end
 
     def images_paginator(collection, dialog = false)
-      will_paginate collection
+      paginate collection
     end
 
   end

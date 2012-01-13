@@ -70,6 +70,6 @@
                 :confirm => delete_confirmation,
                 :class => "button confirm-delete") unless hide_delete %>
 
-    <%= will_paginate paginate_collection, paginate unless paginate_collection.nil? %>
+    <%= paginate paginate_collection, paginate unless paginate_collection.nil? %>
   </div>
 </div>

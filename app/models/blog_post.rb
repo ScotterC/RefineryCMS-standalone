@@ -52,7 +52,15 @@ class BlogPost < ActiveRecord::Base
   end
 
   def live?
-    !draft and published_at <= Time.now
+    if published_at
+      !draft and (published_at <= Time.now)
+    else
+      false
+    end
+  end
+
+  def per_page
+     10
   end
 
   def category_ids=(ids)

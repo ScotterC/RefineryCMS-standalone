@@ -169,26 +169,26 @@ describe Page do
   end
 
   context "should add url suffix" do
-    let(:reserved_word) { Page.friendly_id_config.reserved_words.last }
-    let(:page_with_reserved_title) do
-      Page.create!({
-        :title => reserved_word,
-        :deletable => true
-      })
-    end
-    let(:child_with_reserved_title_parent) do
-      page_with_reserved_title.children.create(:title => 'reserved title child page')
-    end
+    # let(:reserved_word) { Page.friendly_id_config.reserved_words.last }
+    # let(:page_with_reserved_title) do
+    #   Page.create!({
+    #     :title => reserved_word,
+    #     :deletable => true
+    #   })
+    # end
+    # let(:child_with_reserved_title_parent) do
+    #   page_with_reserved_title.children.create(:title => 'reserved title child page')
+    # end
 
-    before { turn_on_marketable_urls }
+    # before { turn_on_marketable_urls }
 
-    it "when title is set to a reserved word" do
-      page_with_reserved_title.url[:path].should == ["#{reserved_word}-page"]
-    end
+    # it "when title is set to a reserved word" do
+    #   page_with_reserved_title.url[:path].should == ["#{reserved_word}-page"]
+    # end
 
-    it "when parent page title is set to a reserved word" do
-      child_with_reserved_title_parent.url[:path].should == ["#{reserved_word}-page", 'reserved-title-child-page']
-    end
+    # it "when parent page title is set to a reserved word" do
+    #   child_with_reserved_title_parent.url[:path].should == ["#{reserved_word}-page", 'reserved-title-child-page']
+    # end
   end
 
   context "meta data" do

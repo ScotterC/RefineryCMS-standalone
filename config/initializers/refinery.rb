@@ -45,12 +45,6 @@ end
   end
 end if ::Rack.version <= '1.2.1'
 
-
-
-WillPaginate::ViewHelpers.pagination_options[:previous_label] = "&laquo;".html_safe
-WillPaginate::ViewHelpers.pagination_options[:next_label] = "&raquo;".html_safe
-
-
 app_images = Dragonfly[:refinery_images]
 app_images.configure_with(:imagemagick)
 app_images.configure_with(:rails) do |c|

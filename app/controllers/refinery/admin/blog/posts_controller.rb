@@ -1,16 +1,17 @@
 
   class Refinery::Admin::Blog::PostsController < Refinery::Admin::BaseController
-    require 'will_paginate/array'
+    #require 'will_paginate/array'
     
     crudify :blog_post,
             :title_attribute => :title,
             :order => 'published_at DESC'
         
     def uncategorized
-      @blog_posts = BlogPost.uncategorized.paginate({
-        :page => params[:page],
-        :per_page => BlogPost.per_page
-      })
+      # @blog_posts = BlogPost.uncategorized.paginate({
+      #   :page => params[:page],
+      #   :per_page => BlogPost.per_page
+      # })
+      @blog_posts = BlogPost.uncategorized.page(params[:page]).per(BlogPost.per_page)
     end
 
     def tags
